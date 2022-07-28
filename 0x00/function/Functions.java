@@ -1,26 +1,28 @@
 public class Functions {
-    // Faça somente 1 coisa
-    //A
-    public void saveCash(Income income, Expense expense){
+
+    //B
+    public void saveIncome(Income income){
         inRepo.save(income);
+    }
+    public void saveExpense(Expense expense){
         outRepo.save(expense);
     }
 
-    //B
+    //A
     @PostMapping("/user")
     public User saveUser(User user){
-        return userService.userRepository.save(user);
+        return userService.save(user);
     }
 
-    //B
-    public void saveUser(String userName, User user, Date date, boolean isAdmin){};
+    //A
+    public void saveUser(User user){};
 
-    //B
+    //A
     public User saveUser(User user){
+        if(user.isAdmin){
+            user.setRole(user);
+        }
         return userRepository.save(user);
-    }
-    public void setRole(User user){
-        user.setRole(user);
     }
 
     //B
